@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 class HFDataset(Dataset):
 
     def __init__(self, hf_dataset, split='train'):
-        self.dataset = hf_dataset[split]
+        self.dataset = hf_dataset #[split]
         self.transform = transforms.Compose([
             transforms.Lambda(lambda img: img.convert('RGB')),
             transforms.Resize((224, 224)),
