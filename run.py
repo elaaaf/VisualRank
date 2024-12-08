@@ -2,7 +2,7 @@ from FeatureExtractor import FeatureExtractor
 from datasets import load_dataset
 import numpy as np
 from visual_rank import VisualRank
-
+from kmeans_baseline import KMeansBaseline
 
 def main():
 
@@ -21,6 +21,13 @@ def main():
     
     print(f"Feature matrix shape: {feature_matrix.shape}")
     print(f"Similarity matrix shape: {similarity_matrix.shape}")
+
+    print("Applying k-means baseline...")
+    kmeans_baseline = KMeansBaseline(n_clusters=5, use_pca=True)
+    cluster_labels = kmeans_baseline.cluster(feature_matrix)
+
+    print("Visualizing k-means clusters...")
+    kmeans_baseline.visualize_clusters(cluster_labels, ds)
     
 
     print("Calculating Visual Rank...")
