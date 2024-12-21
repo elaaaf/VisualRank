@@ -63,7 +63,7 @@ class FeatureExtractor:
             norm = np.linalg.norm(feature_matrix, axis=1)[:,np.newaxis]
             eps = 1e-10  # Small constant to avoid division by zero
             normalized_feature_matrix = feature_matrix / (norm + eps)
-            return np.dot(normalized_feature_matrix, normalized_feature_matrix.T)
+            return 1 - np.dot(normalized_feature_matrix, normalized_feature_matrix.T)
             
 
         elif metric == 'euclidean_distance':
